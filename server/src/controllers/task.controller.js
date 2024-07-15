@@ -116,10 +116,81 @@ const getPublicTaskById = async (req, res) => {
 
 };
 
+const putTasks = async (req, res) => {
+
+    const userId = req.user.id;
+    const { title, description, genres } = req.body;
+    const { id } = req.params;
+
+    try {
+        const userFound = await User.findByPk(userId);
+        if(!userFound) return res.status(404).send({ msg: 'Usuario no encontrado' });
+
+        const taskFound = await Task.findOne({
+            where: {
+                id,
+                userId
+            },
+            include: {
+                model: User,
+                attributes: {
+                    exclude: ['password', 'token']
+                }
+            }
+        });
+        if(!taskFound) return res.status(404).send({ msg: 'Tarea no encontrada' });
+
+        const genresPermited = ['Tecnologia', 'Salud y Bienestar', 'Viajes', 'Negocios y Finanzas','Cocina y Receta', 'Varios'];
+
+        if(genres && !genresPermited.includes(genres)) return res.status(404).send({ msg: 'El género ingresado no corresponde a ninguno existente' })
+
+        taskFound.title = title ? title : taskFound.title;
+        taskFound.description = description ? description : taskFound.description;
+        taskFound.genres = genres ? genres : taskFound.genres;
+        await taskFound.save();
+
+        return res.status(200).send(taskFound);
+
+    } catch (error) {
+        return res.status(404).send({ msg: error.message });
+    }
+
+};
+
+const deleteTask = async (req, res) => {
+
+    const userId = req.user.id;
+    const { id } = req.params;
+
+    try {
+        const userFound = await User.findByPk(userId);
+        if(!userFound) return res.status(404).send({ msg: 'Usuario no encontrado' });
+
+        const taskFound = await Task.findOne({
+            where: {
+                id,
+                userId
+            }
+        });
+        if(!taskFound) return res.status(404).send({ msg: 'Tarea no encontrada' });
+
+        await taskFound.destroy();
+
+        return res.status(200).send({ msg: 'La tarea se ha eliminado correctamente' });
+
+    } catch (error) {
+        return res.status(404).send({ msg: error.message });
+    }
+
+};
+
+
 module.exports = {
     createTask,
     getTasksByUser,
     getAllTasks,
     getPublicTaskById,
-    getTaskById
+    getTaskById,
+    putTasks,
+    deleteTask
 }

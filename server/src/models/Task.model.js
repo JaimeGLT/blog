@@ -24,7 +24,7 @@ module.exports = database => {
         },
         genres: {
             type: DataTypes.ENUM,
-            values: ['Tecnología', 'Salud y Bienestar', 'Viajes', 'Negocios y Finanzas','Cocina y Receta', 'Varios'],
+            values: ['Tecnologia', 'Salud y Bienestar', 'Viajes', 'Negocios y Finanzas','Cocina y Receta', 'Varios'],
             defaultValue: 'Varios',
             allowNull: false
         }

@@ -14,8 +14,9 @@ console.log(database.models);
 User.hasMany(Task, { foreignKey: 'userId' })
 Task.belongsTo(User, { foreignKey: 'userId' })
 
-User.belongsToMany(Task, { through: 'Favorite', foreignKey: 'userId', timestamps: false });
-Task.belongsToMany(User, { through: 'Favorite', foreignKey: 'taskId', timestamps: false})
+User.belongsToMany(Task, { through: 'Favorite', as: 'FavoriteTasks', foreignKey: 'userId', timestamps: false });
+Task.belongsToMany(User, { through: 'Favorite', as: 'FavoriteBy', foreignKey: 'taskId', timestamps: false });
+// console.log(Object.keys(User.prototype)); // esto es para ver los metodos que tiene el usuario con la relacion;
 
 module.exports = {
     database,
