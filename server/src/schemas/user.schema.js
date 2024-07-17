@@ -5,6 +5,8 @@ const registerSchema = z.object({
         required_error: 'Nombre de usuario es obligatorio'
     }).min(4, {
         message: 'Nombre de usuario deberia tener un mínimo de 4 carácteres'
+    }).max(15, {
+        message: 'El username no puede tener mas de 15 caracteres'
     }),
     email: z.string({
         required_error: 'Correo electrónico es obligatorio'
@@ -33,9 +35,9 @@ const loginSchema = z.object({
 
 const sendEmailSchema = z.object({
     email: z.string({
-        required_error: 'El email es obligatorio'
+        required_error: 'Correo electrónico es obligatorio'
     }).email({
-        message: 'El correo deberia seguir esta forma: example123@example.com'
+        message: 'El correo electronico deberia seguir este ejemplo: exameplo123@example.com'
     })
 });
 

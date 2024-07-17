@@ -21,7 +21,7 @@ async function main(email, token) {
       subject: "Forgot Password  ✔", // Subject line
       html: `
       <b>Ingresa a este enlace para cambiar tu contraseña</b> 
-      <a href="http://localhost:3001/new-password/${token}">Cambiar Contraseña</a>`, // html body
+      <a href="http://localhost:5173/new-password/${token}">Cambiar Contraseña</a>`, // html body
     });
   
     console.log("Message sent: %s", info.messageId);

@@ -1,5 +1,7 @@
 const { User } = require('../../db');
 const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken')
+const { SECRET_KEY } = process.env;
 const {generateJWT, tokenNewPassword} = require('../libs/token');
 const main = require('../libs/sendCorreo');
 
@@ -50,9 +52,9 @@ const login = async (req, res) => {
         const token = generateJWT(userFound);
 
         res.cookie('access_token', token, {
-            httpOnly: true,
+            httpOnly: false,
             secure: true,
-            sameSite: false
+            sameSite: false,
         });
 
         return res.status(200).send({
@@ -83,7 +85,7 @@ const logout = (req, res) => {
 const forgotPassword = async (req ,res) => {
 
     const { email } = req.body;
-
+    console.log(email, 'asd')
     if(!email) return res.status(400).send({ msg: 'El correo es obligatorio' });
 
     try {
@@ -189,6 +191,33 @@ const putUser = async (req, res) => {
 
 };
 
+const verify = (req, res) => {
+
+    const { access_token } = req.cookies;
+    if(!access_token)  return res.status(404).send({ msg: 'No token no autorizacion' });
+    console.log('jaime');
+
+    try {
+        
+        jwt.verify(access_token, SECRET_KEY, async (err, user) => {
+            if(err) return res.status(404).send({ msg: 'Token invalido' });
+            const userFound = await User.findByPk(user.id);
+            if(!userFound) return res.status(404).send({ msg: 'Usuario no encontrado, autorizacion denegada' });
+    
+            return res.status(200).send({
+                id: userFound.id,
+                username: userFound.username,
+                email: userFound.email
+            });
+    
+        });
+    } catch (error) {
+        return res.status(400).send({ error: error.message });
+    }
+
+
+};
+
 module.exports = {
     register,
     login,
@@ -196,5 +225,6 @@ module.exports = {
     forgotPassword,
     newPassword,
     getUserById,
-    putUser
+    putUser,
+    verify
 }

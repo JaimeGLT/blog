@@ -1,0 +1,14 @@
+.tasks-container{
+    width: 100vw;
+    margin: auto; 
+}
+
+.task-container {
+    display: grid;
+    margin-top: 20px;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+}
