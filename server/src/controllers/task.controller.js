@@ -10,7 +10,7 @@ const createTask = async (req, res) => {
     if(!description) return res.status(404).send({ msg: 'La descripción es obligatoria' });
     if(!genres) return res.status(404).send({ msg: 'Es obligatorio que tenga 1 genero' })
 
-    const genresAllowed = ['Tecnología', 'Salud y Bienestar', 'Viajes', 'Negocios y Finanzas','Cocina y Receta', 'Varios'];
+    const genresAllowed = ['Tecnologia', 'Salud y Bienestar', 'Viajes', 'Negocios y Finanzas','Cocina y Receta', 'Varios'];
 
     try {
         const userFound = await User.findByPk(id);

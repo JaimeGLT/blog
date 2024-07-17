@@ -1,13 +1,18 @@
 import React, { useEffect, useState } from 'react'
+import axios from '../api/axios'
+import { useNavigate } from 'react-router-dom';
 
 const SubirPublicacion = () => {
 
     const [ dateNow, setDateNow ] = useState('');
-    const [] = useState({
+    const [task, setTask] = useState({
         title: '',
         description: '',
         genres: ''
     });
+    const [ errors, setErrors ] = useState([]);
+
+    const navigate = useNavigate();
 
     useEffect(() => {
         const date = new Date();
@@ -23,16 +28,44 @@ const SubirPublicacion = () => {
     
     const handleSubmit = async e => {
         e.preventDefault();
-
+        try {
+            const res = await axios.post('/task', task);
+            navigate('/home');
+        } catch (error) {
+            setErrors(error.response.data);
+        }
     };
+
+    const handleChange = (e) => {
+        const { name } = e.target;
+
+        setTask({
+            ...task,
+            [name]: e.target.value
+        })
+    };
+
 
   return (
     <div>
         <form onSubmit={handleSubmit}>
-            <input type="text" placeholder='Título' onChange={handleChange} name={task.title}/>
-            <input type="text" placeholder='Título' onChange={handleChange} name={task.title}/>
+
+            {
+                errors.length ? errors.map(err => <p key={2*Math.random()}>{err}</p>) : errors.msg ? errors.msg : null
+            }
+
+            <input type="text" placeholder='Título' onChange={handleChange} value={task.title} name='title'/>
+            <input type="text" placeholder='Descripción' onChange={handleChange} value={task.description} name='description'/>
             <p>Fecha de Publicacion: {dateNow}</p>
-            <input type="text" placeholder='Título' onChange={handleChange} name={task.title}/>
+            <label htmlFor='select'>Elige un género</label>
+            <select name="genres" id="select" onChange={handleChange}>
+                <option value="Tecnologia">Tecnologia</option>
+                <option value="Salud y Bienestar">Salud y Bienestar</option>
+                <option value="Viajes">Viajes</option>
+                <option value="Negocios y Finanzas">Negocios y Finanzas</option>
+                <option value="Cocina y Receta">Cocina y Receta</option>
+                <option value="Varios">Varios</option>
+            </select>
 
             <button>Crear Publicacion</button>
         </form>

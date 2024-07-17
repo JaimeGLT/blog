@@ -1,10 +1,9 @@
-import { useEffect, useState } from "react"
-import Cookies from 'js-cookie';
-import { Outlet, useNavigate } from "react-router-dom";
+import { useEffect } from "react"
+import { Outlet } from "react-router-dom";
 import axios from '../api/axios';
 
 const ProtectedRoutes = ({ setIsAutenticated, setUser }) => {
-    const cookies = Cookies.get();
+
 
     useEffect(() => {
 
