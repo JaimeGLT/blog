@@ -8,7 +8,7 @@ const createTask = async (req, res) => {
     if(!id) return res.status(400).send({ msg: 'Usuario no encontrado' });
     if(!title) return res.status(404).send({ msg: 'El título es obligatorio' });
     if(!description) return res.status(404).send({ msg: 'La descripción es obligatoria' });
-    if(!genres) return res.status(404).send({ msg: 'Es obligatorio que tenga 1 genero' })
+    if(!genres) return res.status(404).send({ msg: 'Debes seleccionar un género' })
 
     const genresAllowed = ['Tecnologia', 'Salud y Bienestar', 'Viajes', 'Negocios y Finanzas','Cocina y Receta', 'Varios'];
 
