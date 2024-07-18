@@ -15,7 +15,6 @@ const Tasks = ({ isAutenticated }) => {
                 setTasks(res.data);
             } catch (error) {
                 setTasks([])
-                console.log(error);
             }
         };
         getTasks();
@@ -23,10 +22,10 @@ const Tasks = ({ isAutenticated }) => {
 
   return (
     <div className='tasks-container'>
-        <NavBar isAutenticated={isAutenticated} />
+        <NavBar isAutenticated={isAutenticated} setTasks={setTasks} />
         <div className='task-container'>
             {
-                !tasks.length ? <p>Todabía no se han creado publicaciones...</p> 
+                tasks.msg ? <p>{tasks.msg}</p> : !tasks.length ? <p>Todabía no se han creado publicaciones...</p> 
                 : tasks?.map(tarea => <Task key={tarea.id} id={tarea.id} description={tarea.description} datePublication={tarea.datePublication} title={tarea.title} genres={tarea.genres}/>)
             }
 

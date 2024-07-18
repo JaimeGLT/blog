@@ -16,7 +16,6 @@ const VerifyToken = () => {
             try {
                 const res = await axios.get('/verify');
             } catch (error) {
-                console.log(error);
                 navigate('/home');
             }
         };

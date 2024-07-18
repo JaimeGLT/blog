@@ -14,7 +14,7 @@ const MyFavorites = ({ isAutenticated }) => {
                 const res = await axios.get('/favorites');
                 setTasks(res.data);
             } catch (error) {
-                console.log(error);
+                console.log('');
             }
         };
         getTasks();
@@ -22,7 +22,7 @@ const MyFavorites = ({ isAutenticated }) => {
 
   return (
     <div className='tasks-container'>
-        <NavBar isAutenticated={isAutenticated} />
+        <NavBar isAutenticated={isAutenticated} setTasks={setTasks}/>
         <div className='task-container'>
             {
                 tasks.msg ? <p>{tasks.msg}</p> : tasks.map(tarea => <Task key={tarea.id} id={tarea.id} description={tarea.description} datePublication={tarea.datePublication} title={tarea.title} genres={tarea.genres}/>)

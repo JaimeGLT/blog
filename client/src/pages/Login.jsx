@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import axios from '../api/axios';
 
 const Login = () => {
@@ -43,7 +43,18 @@ const Login = () => {
             <input type="email" name='email' onChange={handleChange} value={userLogin.email} placeholder='Correo electrónico'/>
             <input type="password" name='password' onChange={handleChange} value={userLogin.password} placeholder='Contraseña'/>
 
+            <Link to='/forgot-password'>
+                <p>Olvidé mi contraseña</p>
+            </Link>
+
             <button>Login</button>
+
+            <div>
+                <p>¿Aún no tienes una cuenta?</p>
+                <Link to='/register'>
+                    <span>Regístrate</span>
+                </Link>
+            </div>
 
         </form>
     </div>

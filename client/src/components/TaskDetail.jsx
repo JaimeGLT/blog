@@ -40,7 +40,7 @@ const TaskDetail = ({ isAutenticated, user }) => {
       const res = await axiosMOD.post(`/favorite/${id}`);
       setIsFavorite(!isFavorite)
     } catch (error) {
-      console.log(error);
+      console.log('');
     }
   }
 
@@ -49,7 +49,7 @@ const TaskDetail = ({ isAutenticated, user }) => {
       const res = await axiosMOD.delete(`/favorite/${id}`);
       setIsFavorite(!isFavorite);
     } catch (error) {
-      console.log(error);
+      console.log('');
     }
   };
 

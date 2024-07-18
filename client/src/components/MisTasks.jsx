@@ -25,7 +25,7 @@ const MisTasks = ({ isAutenticated }) => {
 
     return (
         <div className="tasks-container">
-            <NavBar isAutenticated={isAutenticated} />
+            <NavBar isAutenticated={isAutenticated} setTasks={setTasks}/>
             <div className="task-container">
                 {tasks.msg ? (
                     <p>{tasks.msg}</p>

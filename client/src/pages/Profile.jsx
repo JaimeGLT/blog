@@ -32,7 +32,7 @@ const Profile = ({ user, isAutenticated }) => {
         try {
             await axios.put('/user', userPut);
         } catch (error) {
-            console.log(error);
+            console.log('');
         }
     };
 

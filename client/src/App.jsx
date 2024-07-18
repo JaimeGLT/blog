@@ -20,7 +20,8 @@ function App() {
 
   const [ isAutenticated, setIsAutenticated ] = useState(false);
   const [ user, setUser ] = useState('');
-  console.log(isAutenticated);
+  
+  
   return (
     <BrowserRouter>
       <Routes>

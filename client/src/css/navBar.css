@@ -35,12 +35,14 @@ nav img {
     position: absolute;
     display: none;
     list-style: none;
-    width: 200px;
+    width: 100px;
     background-color: rgba(0, 0, 0, .5);
 }
 
 .menu-horizontal li:hover .menu-vertical {
     display: block;
+    margin-top: 20px;
+    background-color: rgba(0, 128, 0, 0.322);
 }
 
 .menu-vertical li:hover {
@@ -53,3 +55,39 @@ nav img {
     cursor: pointer;
 }
 
+/* asdf*/
+section {
+    width: 100px;
+}
+
+.menu-horizontal > section:hover {
+    background-color: red;
+    width: 100px;
+}
+
+.filtrado-categorias {
+    position: absolute;
+    display: none;
+    list-style: none;
+    background-color: rgba(0, 0, 0, .5);
+}
+
+#asdf {
+    margin-left: 100px;
+}
+
+.menu-horizontal section:hover .filtrado-categorias {
+    display: flex;
+    flex-direction: row;
+    width: 100px;
+}
+
+.filtrado-categorias ul:hover {
+    background-color: black;
+}
+
+.filtrado-categorias li {
+    display: block;
+    padding: 10px;
+    cursor: pointer;
+}

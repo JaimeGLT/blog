@@ -18,9 +18,8 @@ const TaskMias = ({
         try {
             const res = await axiosMOD.delete(`/task/${id}`);
             setTasks(tasks.filter((task) => task.id !== id));
-            console.log(res.data);
         } catch (error) {
-            console.log(error);
+            console.log('');
         }
     };
 

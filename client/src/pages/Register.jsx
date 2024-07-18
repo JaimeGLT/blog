@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import axios from '../api/axios';
 
 const Register = () => {
@@ -48,6 +48,13 @@ const Register = () => {
         <input type="password" placeholder='Contraseña' onChange={handleChange} value={userRegister.password} name='password'/>
 
         <button>Register</button>
+
+        <div>
+          <p>¿Ya tienes una cuenta?</p>
+          <Link to='/login'>
+            <span>Inicia sesión</span>
+          </Link>
+        </div>
 
       </form>
     </div>

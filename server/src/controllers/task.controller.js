@@ -35,6 +35,7 @@ const createTask = async (req, res) => {
 const getTasksByUser = async (req, res) => {
 
     const { id } = req.user;
+    const { name } =  req.query;
 
     try {
         const userFound = await User.findByPk(id);
@@ -47,7 +48,15 @@ const getTasksByUser = async (req, res) => {
                 attributes: { exclude: ['password', 'token'] }
              } 
         });
-        if(!findTasks.length) return res.status(404).send({ msg: 'No hay tareas creadas aún' });
+
+        if(name) {
+            const tasks = findTasks.filter(task => task.title.toLowerCase().includes(name.toLowerCase()));
+            if(!tasks.length) return res.status(404).send({ msg: 'No existen publicaciones con ese nombre' });
+
+            return res.status(200).send(tasks);
+        }
+
+        if(!findTasks.length) return res.status(404).send({ msg: 'No hay publicaciones creadas aún' });
 
         return res.status(200).send(findTasks);
 
@@ -89,8 +98,19 @@ const getTaskById = async (req, res) => {
 
 const getAllTasks = async (req, res) => {
 
+    const { name } = req.query;
+
     try {
         const allTasks = await Task.findAll();
+
+        if(name) {
+            const tasksByName = allTasks.filter(task => task.title.toLowerCase().includes(name.toLowerCase()));
+            console.log(tasksByName)
+            if(!tasksByName.length) return res.status(400).send({ msg: 'No existen publicaciones con ese nombre' });
+
+            return res.status(200).send(tasksByName);
+        };
+
         if(!allTasks.length) return res.status(200).send({ msg: 'Todavia no se han creado publicaciones' });
 
         return res.status(200).send(allTasks);

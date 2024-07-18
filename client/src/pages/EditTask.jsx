@@ -38,7 +38,7 @@ const EditTask = () => {
             const res = await axiosMOD.put(`/task/${id}`, task);
             navigate('/mis-publicaciones');
         } catch (error) {
-            console.log(error);
+            console.log('');
         }
     };
 
@@ -47,7 +47,7 @@ const EditTask = () => {
             const res = await axiosMOD.delete(`/task/${id}`);
             navigate('/mis-publicaciones');
         } catch (error) {
-            console.log(error);
+            console.log('');
         }
     };
 

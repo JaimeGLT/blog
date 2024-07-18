@@ -28,13 +28,20 @@ const addFavorite = async (req, res) => {
 const getFavorites = async (req, res) => {
 
     const userId = req.user.id;
+    const { name } = req.query;
 
     try {
         const userFound = await User.findByPk(userId);
         if(!userFound) return res.status(404).send({ msg: 'Usuarion no encontrado' });
 
         const tasks = await userFound.getFavoriteTasks();
-        if(!tasks.length) return res.status(200).send({ msg: 'Aún no se han añadido tareas a favoritos' });
+        if(name) {
+            const tasksByName = tasks.filter(task => task.title.toLowerCase().includes(name.toLowerCase()));
+            if(!tasksByName.length) return res.status(400).send({ msg: 'No existen favoritos con ese nombre' });
+
+            return res.status(200).send(tasksByName);
+        }
+        if(!tasks.length) return res.status(200).send({ msg: 'Aún no se han añadido publicaciones a favoritos' });
 
         return res.status(200).send(tasks);
 
