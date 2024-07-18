@@ -4,7 +4,7 @@ import Task from '../components/Task';
 import NavBar from '../components/NavBar';
 import '../css/Tasks.css';
 
-const MyFavorites = ({ isAuteticated }) => {
+const MyFavorites = ({ isAutenticated }) => {
 
     const [ tasks, setTasks ] = useState([]);
 
@@ -22,7 +22,7 @@ const MyFavorites = ({ isAuteticated }) => {
 
   return (
     <div className='tasks-container'>
-        <NavBar isAuteticated={isAuteticated} />
+        <NavBar isAutenticated={isAutenticated} />
         <div className='task-container'>
             {
                 tasks.msg ? <p>{tasks.msg}</p> : tasks.map(tarea => <Task key={tarea.id} id={tarea.id} description={tarea.description} datePublication={tarea.datePublication} title={tarea.title} genres={tarea.genres}/>)

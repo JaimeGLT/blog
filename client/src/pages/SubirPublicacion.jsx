@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import axios from '../api/axios'
 import { useNavigate } from 'react-router-dom';
+import NavBar from '../components/NavBar';
 
-const SubirPublicacion = () => {
+const SubirPublicacion = ({ isAutenticated }) => {
 
     const [ dateNow, setDateNow ] = useState('');
     const [task, setTask] = useState({
@@ -48,6 +49,7 @@ const SubirPublicacion = () => {
 
   return (
     <div>
+        <NavBar isAutenticated={isAutenticated}/>
         <form onSubmit={handleSubmit}>
 
             {
@@ -59,6 +61,7 @@ const SubirPublicacion = () => {
             <p>Fecha de Publicacion: {dateNow}</p>
             <label htmlFor='select'>Elige un género</label>
             <select name="genres" id="select" onChange={handleChange}>
+                <option value="">Seleccionar...</option>
                 <option value="Tecnologia">Tecnologia</option>
                 <option value="Salud y Bienestar">Salud y Bienestar</option>
                 <option value="Viajes">Viajes</option>

@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 import add from '../img/add.png'
 import "../css/Tasks.css";
 
-const MisTasks = ({ isAuteticated }) => {
+const MisTasks = ({ isAutenticated }) => {
     const [tasks, setTasks] = useState([]);
 
     const navigate = useNavigate();
@@ -25,7 +25,7 @@ const MisTasks = ({ isAuteticated }) => {
 
     return (
         <div className="tasks-container">
-            <NavBar isAuteticated={isAuteticated} />
+            <NavBar isAutenticated={isAutenticated} />
             <div className="task-container">
                 {tasks.msg ? (
                     <p>{tasks.msg}</p>

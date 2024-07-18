@@ -52,7 +52,7 @@ const NewPassword = () => {
 
             <button>Confirmar</button>
             {
-                message ? <p>{message} Redirigiendo en 5 segundos...</p> : null
+                message ? <p>{message} Redirigiendo en 3 segundos...</p> : null
             }
         </form>
     </div>

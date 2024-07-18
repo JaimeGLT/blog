@@ -2,12 +2,12 @@ import React from 'react'
 import Tasks from '../components/Tasks'
 import '../css/home.css'
 
-const Home = ({ isAuteticated, user }) => {
+const Home = ({ isAutenticated }) => {
 
 
   return (
     <div className='container-home'>
-      <Tasks isAuteticated={isAuteticated}/>
+      <Tasks isAutenticated={isAutenticated}/>
     </div>
   )
 }

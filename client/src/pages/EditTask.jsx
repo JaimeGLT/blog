@@ -74,7 +74,7 @@ const EditTask = () => {
                             />
                             <p>Fecha de publicacion: {task?.datePublication}</p>
                             <select name="genres" id="select" onChange={handleChange} value={task.genres}>
-                                <option value="Tecnologia">Tecnologia</option>
+                                <option value="Tecnologia">Tecnología</option>
                                 <option value="Salud y Bienestar">Salud y Bienestar</option>
                                 <option value="Viajes">Viajes</option>
                                 <option value="Negocios y Finanzas">Negocios y Finanzas</option>

@@ -15,7 +15,6 @@ const ProtectedRoutes = ({ setIsAutenticated, setUser }) => {
               return;
             } catch (error) {
               setIsAutenticated(false);
-              console.log(error);
             }
       }
       

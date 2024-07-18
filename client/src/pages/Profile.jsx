@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import axios from '../api/axios'
+import NavBar from '../components/NavBar';
 
-const Profile = ({ user }) => {
+const Profile = ({ user, isAutenticated }) => {
 
     const [ userPut, setUserPut ] = useState({
         username: '',
@@ -37,6 +38,7 @@ const Profile = ({ user }) => {
 
   return (
     <div>
+        <NavBar isAutenticated={isAutenticated} />
         <form onSubmit={handleSubmit}>
             <input 
                 type="text" 

@@ -60,16 +60,17 @@ const TaskDetail = ({ isAutenticated, user }) => {
 
   return (
     <div>
-      <NavBar isAuteticated={isAutenticated}/>
+      <NavBar isAutenticated={isAutenticated}/>
       {
         typeof task === 'string' ? <p>Tarea no encontrada</p> 
         : (
           <>
           <p>Esta publicación pertenece a: {user.username}</p>
             {
-              isFavorite ? <button onClick={handleDelete}>Eliminar de favoritos</button> 
+              !isAutenticated ? null : isFavorite ?  <button onClick={handleDelete}>Eliminar de favoritos</button> 
               : <button onClick={handleFavorite}>Agregar a favoritos</button>
             }
+
 
             <h2>{task.title}</h2>
             <p>{task.description}</p>

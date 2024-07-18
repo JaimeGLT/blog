@@ -20,7 +20,7 @@ function App() {
 
   const [ isAutenticated, setIsAutenticated ] = useState(false);
   const [ user, setUser ] = useState('');
-
+  console.log(isAutenticated);
   return (
     <BrowserRouter>
       <Routes>
@@ -32,14 +32,14 @@ function App() {
 
 
         <Route element={<ProtectedRoutes isAutenticated={isAutenticated} setIsAutenticated={setIsAutenticated} setUser={setUser}/>}>
-          <Route path='/home' element={<Home isAuteticated={isAutenticated} user={user}/>}/>
+          <Route path='/home' element={<Home isAutenticated={isAutenticated}/>}/>
           <Route path='/publicacion/:id' element={<TaskDetail isAutenticated={isAutenticated} user={user}/>}/>
 
           <Route element={<VerifyToken />}>
-            <Route path='/mi-perfil' element={<Profile user={user} setUser={setUser}/>}/>
-            <Route path='/subir-publicacion' element={<SubirPublicacion />}/>
-            <Route path='/mis-favoritos' element={<MyFavorites isAuteticated={isAutenticated}/>}/> 
-            <Route path='/mis-publicaciones' element={<MisTasks isAuteticated={isAutenticated}/>}/>
+            <Route path='/mi-perfil' element={<Profile user={user} setUser={setUser} isAutenticated={isAutenticated}/>}/>
+            <Route path='/subir-publicacion' element={<SubirPublicacion isAutenticated={isAutenticated}/>}/>
+            <Route path='/mis-favoritos' element={<MyFavorites isAutenticated={isAutenticated}/>}/> 
+            <Route path='/mis-publicaciones' element={<MisTasks isAutenticated={isAutenticated}/>}/>
             <Route path='/editar-publicacion/:id' element={<EditTask/>}/>
           </Route>
         </Route>
