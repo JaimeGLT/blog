@@ -11,11 +11,11 @@ module.exports = database => {
             unique: true,
         },
         title: {
-            type: DataTypes.STRING(80),
+            type: DataTypes.STRING(150),
             allowNull: false,
         },
         description: {
-            type: DataTypes.STRING,
+            type: DataTypes.STRING(7000),
             allowNull: false
         },
         datePublication: {
