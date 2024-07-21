@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import fotoPerfil from '../img/foto.png'
 import { useLocation, useNavigate, Link } from 'react-router-dom';
 import axios from '../api/axios'
+import searchIMG from '../img/search (1).png'
 import '../css/navBar.css';
 
 const NavBar = ({ isAutenticated, setTasks }) => {
@@ -70,12 +71,12 @@ const NavBar = ({ isAutenticated, setTasks }) => {
 
     return (
         <nav>
-                { pathname !== '/subir-publicacion' && pathname !== '/mi-perfil' ? <>
+                { pathname !== '/subir-publicacion' && pathname !== '/mi-perfil' ? <div className='container-search'>
                     <input type="input" placeholder='Buscar por título' onChange={handleChangeSearch} value={search} />
-        
-                    <button onClick={handleSearch}>Buscar</button>
+                    
+                    <img src={searchIMG} onClick={handleSearch}/>
 
-                </>
+                </div>
                     : null }
                 <ul className='menu-horizontal'>
             {

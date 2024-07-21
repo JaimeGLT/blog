@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react'
 import { useNavigate, useParams, useLocation } from 'react-router-dom';
 import axiosMOD from '../api/axios';
 import NavBar from './NavBar';
+import spaceIMG from '../img/space.jpg'
+import '../css/taskDetail.css';
 
 
 const TaskDetail = ({ isAutenticated, user }) => {
@@ -61,26 +63,33 @@ const TaskDetail = ({ isAutenticated, user }) => {
   return (
     <div>
       <NavBar isAutenticated={isAutenticated}/>
-      {
-        typeof task === 'string' ? <p>Tarea no encontrada</p> 
-        : (
-          <>
-          <p>Esta publicación pertenece a: {user.username}</p>
-            {
-              !isAutenticated ? null : isFavorite ?  <button onClick={handleDelete}>Eliminar de favoritos</button> 
-              : <button onClick={handleFavorite}>Agregar a favoritos</button>
-            }
+      
+        <div className='container-taskDetail'>
+          {
+              typeof task === 'string' ? <p>Tarea no encontrada</p> 
+              : (
+                <>
+                    <p className='p-genres'>{task.genres}</p>
+                    <h2>{task.title}</h2>
+                  
+                    <div className='container-creador'>
+                      <p>{user.username} | </p>
+                      {
+                        !isAutenticated ? null : isFavorite ?  <button id='is-not-fav' onClick={handleDelete}>Eliminar de favoritos</button> 
+                        : <button id='is-fav' onClick={handleFavorite}> Agregar a favoritos</button>
+                      }
+                    </div>
 
-
-            <h2>{task.title}</h2>
-            <p>{task.description}</p>
-            <p>{task.datePublication}</p>
-            <p>{task.genres}</p>
-
-            <button onClick={handlePathname}>Volver</button>
-          </>
-        )
-      }
+                  <p className='p-datePublication'> {task.datePublication}</p>
+                  <img src={spaceIMG} alt="" />
+                  <p className='p-description'>{task.description}</p>
+      
+                  <button className='button-volver' onClick={handlePathname}>Volver</button>
+                </>
+              )
+          }
+        </div>
+      
     </div>
   )
 }

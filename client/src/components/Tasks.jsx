@@ -22,7 +22,9 @@ const Tasks = ({ isAutenticated }) => {
 
   return (
     <div className='tasks-container'>
-        <NavBar isAutenticated={isAutenticated} setTasks={setTasks} />
+        <div>
+            <NavBar isAutenticated={isAutenticated} setTasks={setTasks} />
+        </div>
         <div className='task-container'>
             {
                 tasks.msg ? <p>{tasks.msg}</p> : !tasks.length ? <p>Todabía no se han creado publicaciones...</p> 

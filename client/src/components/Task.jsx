@@ -1,18 +1,26 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import '../css/task.css';
 import { useNavigate } from 'react-router-dom';
+import spaceIMG from '../img/space.jpg';
 
-const Task = ({ id, datePublication, description, genres, title }) => {
+const Task = ({ id, datePublication, genres, title }) => {
 
   const navigate = useNavigate();
+  const [ titleMod, setTitleMod ] = useState(title);
+
+  useEffect(() => {
+    if(title.length >= 140) {
+      setTitleMod(title.slice(1, 115) + '...');
+      return
+    };
+  }, [])
 
   return (
-    <div className='container-task'>
-        <p>{title}</p>
-        <p>{datePublication}</p>
-        <p>{description}</p>
-        <p>{genres}</p>
-        <button onClick={() => navigate(`/publicacion/${id}`)}>Ver Publicación</button>
+    <div className='container-task' onClick={() => navigate(`/publicacion/${id}`)}>
+        <img src={spaceIMG} alt="Space" />
+        <p>Publicado | {datePublication}</p>
+        <p className='p-genre'>{genres}</p>
+        <h3>{titleMod}</h3>
     </div>
   )
 }
