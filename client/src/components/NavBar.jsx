@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 import fotoPerfil from '../img/foto.png'
 import { useLocation, useNavigate, Link } from 'react-router-dom';
+import searchIMG from '../img/search.png'
 import axios from '../api/axios'
-import searchIMG from '../img/search (1).png'
 import '../css/navBar.css';
 
 const NavBar = ({ isAutenticated, setTasks }) => {
@@ -71,48 +71,46 @@ const NavBar = ({ isAutenticated, setTasks }) => {
 
     return (
         <nav>
-                { pathname !== '/subir-publicacion' && pathname !== '/mi-perfil' ? <div className='container-search'>
+                { pathname !== '/subir-publicacion' && pathname !== '/mi-perfil' ? <div className='search-container'>
                     <input type="input" placeholder='Buscar por título' onChange={handleChangeSearch} value={search} />
-                    
-                    <img src={searchIMG} onClick={handleSearch}/>
+        
+                    <img id='search' onClick={handleSearch} src={searchIMG}/>
 
                 </div>
                     : null }
                 <ul className='menu-horizontal'>
             {
-                pathname !== '/subir-publicacion' && pathname !== '/mi-perfil' 
-                    ? <>
-                        <section className='section-filter' value='seteador'>
-                            Filtrar
-                            <li className='filtrado-categorias' value='fecha'>
-                                Fecha
-                                <ul className='menu-vertical'>
-                                    <li value='Más reciente' onClick={handleFilter}>Más reciente</li>
-                                    <li value='Más antiguo' onClick={handleFilter}>Más antiguo</li>
-                                </ul>
-                            </li>
+                    pathname !== '/subir-publicacion' && pathname !== '/mi-perfil' 
+                        ? <>
 
-                            <li className='filtrado-categorias' id='asdf' value='generos'>
-                                Géneros
-                                <ul className='menu-vertical'>
-                                    <li value='Tecnologia' onClick={handleFilter}>Tecnología</li>
-                                    <li value='Salud y Bienestar' onClick={handleFilter}>Salud y Bienestar</li>
-                                    <li value='Viajes' onClick={handleFilter}>Viajes</li>
-                                    <li value='Negocios y Finanzas' onClick={handleFilter}>Negocios y Finanzas</li>
-                                    <li value='Cocina y Receta' onClick={handleFilter}>Cocina y Receta</li>
-                                    <li value='Varios' onClick={handleFilter}>Varios</li>
-                                </ul>
+                            <li className='menu-li' value='seteador'>
+                                <p className='p-filter'>Filtrar</p>
+                                    <ul className='menu-vertical fecha'>
+                                        <p>Fecha</p>
+                                        <li value='Más reciente' onClick={handleFilter}>Más reciente</li>
+                                        <li value='Más antiguo' onClick={handleFilter}>Más antiguo</li>
+                                    </ul>
+
+
+                                    <ul className='menu-vertical'>
+                                        <p>Género</p>
+                                        <li value='Tecnologia' onClick={handleFilter}>Tecnología</li>
+                                        <li value='Salud y Bienestar' onClick={handleFilter}>Salud y Bienestar</li>
+                                        <li value='Viajes' onClick={handleFilter}>Viajes</li>
+                                        <li value='Negocios y Finanzas' onClick={handleFilter}>Negocios y Finanzas</li>
+                                        <li value='Cocina y Receta' onClick={handleFilter}>Cocina y Receta</li>
+                                        <li value='Varios' onClick={handleFilter}>Varios</li>
+                                    </ul>
                             </li>
-                        </section>
-                    </>
+                    </> 
                     : null
             }
 
-                <li>
-                    <img src={fotoPerfil} alt="Perfil" />
+                <li className='register-li'>
+                    <img id='img-profile' src={fotoPerfil} alt="Perfil" />
                     {
                         isAutenticated ? (
-                            <ul className='menu-vertical'>
+                            <ul className='menu-vertical menu-vertical-hola'>
                                 <li onClick={() => navigate('/home')}>Inicio</li>
                                 <li onClick={() => navigate('/mi-perfil')}>Mi perfil</li>
                                 <li onClick={() => navigate('/subir-publicacion')}>Subir publicación</li>

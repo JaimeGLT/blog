@@ -23,3 +23,19 @@
     margin-top: 20px;
     margin-bottom: 20px;
 }
+
+.add-publication {
+    width: 100px;
+    height: 100px;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    cursor: pointer;
+    margin-right: 10px;
+    margin-bottom: 10px;
+}
+
+.add-publication:hover {
+    background-color: rgba(250, 250, 250, 0.158);
+    border-radius: 10px;
+}

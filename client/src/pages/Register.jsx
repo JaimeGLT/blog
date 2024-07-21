@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { useNavigate, Link } from 'react-router-dom';
 import axios from '../api/axios';
+import '../css/register.css';
 
 const Register = () => {
 
@@ -38,20 +39,21 @@ const Register = () => {
   };
 
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
+    <div className='container-register'>
+      <h2>REGISTRO</h2>
+      <form onSubmit={handleSubmit} className='form-register'>
         {
-          errors?.length ? errors?.map(err => <p key={2 * Math.random()}>{err}</p>) : errors?.msg ? <p>{errors.msg}</p> : null
+          errors?.length ? errors?.map(err => <p className='p-errors' key={2 * Math.random()}>{err}</p>) : errors?.msg ? <p className='p-errors'>{errors.msg}</p> : null
         }
         <input type="text" placeholder='Nombre de Usuario' onChange={handleChange} value={userRegister.username} name='username'/>
         <input type="email" placeholder='Correo Electrónico' onChange={handleChange} value={userRegister.email} name='email'/>
         <input type="password" placeholder='Contraseña' onChange={handleChange} value={userRegister.password} name='password'/>
 
-        <button>Register</button>
+        <button>Registrarse</button>
 
-        <div>
+        <div className='ir-login'>
           <p>¿Ya tienes una cuenta?</p>
-          <Link to='/login'>
+          <Link to='/login' className='to-login'>
             <span>Inicia sesión</span>
           </Link>
         </div>

@@ -1,18 +1,28 @@
-import React, { useState } from "react";
-import "../css/task.css";
+import React, { useState, useEffect } from "react";
 import axiosMOD from "../api/axios";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import spaceIMG from '../img/space.jpg'
+import "../css/task.css";
+
 
 const TaskMias = ({
     id,
     datePublication,
-    description,
     genres,
     title,
     tasks,
     setTasks,
 }) => {
+    const [ titleMod, setTitleMod ] = useState(title);
+    
     const navigate = useNavigate();
+
+    useEffect(() => {
+        if(title.length >= 90) {
+          setTitleMod(title.slice(0, 90) + '...');
+          return
+        };
+      }, [])
 
     const handleDelete = async () => {
         try {
@@ -25,12 +35,12 @@ const TaskMias = ({
 
     return (
         <div className="container-task">
-            <p>{datePublication}</p>
-            <p>{description}</p>
-            <p>{genres}</p>
-            <p>{title}</p>
-            <div>
-                <button onClick={handleDelete}>Eliminar</button>
+            <img src={spaceIMG} alt="" />
+            <p>Publicado | {datePublication}</p>
+            <p className='p-genre'>{genres}</p>
+            <h3>{titleMod}</h3>
+            <div className="container-btn-taskPublica">
+                <button className='btn-delete'onClick={handleDelete}>Eliminar</button>
                 <button onClick={() => navigate(`/editar-publicacion/${id}`)}>
                     Editar
                 </button>

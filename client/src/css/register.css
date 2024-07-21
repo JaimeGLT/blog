@@ -1,0 +1,76 @@
+.container-register {
+    display: flex;
+    margin-top: 10%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.form-register {
+    display: flex;
+    padding-top: 20px;
+    border-radius: 10px;
+    width: 320px;
+    height: auto;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(22, 22, 22);
+    flex-direction: column;
+}
+
+.form-register input {
+    margin-top: 5px;
+    margin-bottom: 10px;
+    width: 300px;
+    height: 40px;
+    border: none;
+    border-radius: 10px;
+}
+
+.form-register button {
+    height: 35px;
+    cursor: pointer;
+    border: none;
+    font-weight: 700;
+    border-radius: 10px;
+    font-size: 15px;
+    background-color: rgb(151, 212, 233);
+    width: 150px;
+}
+
+.form-register button:hover {
+    background-color: orange;
+}
+
+.ir-login {
+    display: flex;
+    width: 100%;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    justify-content: space-between;
+    padding-left: 10px;
+    padding-right: 15px;
+}
+
+.to-login {
+    text-decoration: none;
+    color: blue;
+}
+
+.to-login:hover {
+    text-decoration: underline;
+}
+
+.container-register h2 {
+    margin-bottom: 30px;
+    font-weight: 900;
+}
+
+.p-errors {
+    width: 300px;
+    background-color: red;
+    font-size: 14px;
+    border: 1px solid black;
+    color: rgba(245, 245, 245, 0.856);
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}

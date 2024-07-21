@@ -6,13 +6,12 @@
 
 
 .container-task {
+    display: flex;
     margin-top: 10px;
     width: 250px;
     height: 300px;
     flex-direction: column;
-    align-items: center;
     background-color: white;
-    justify-content: center;
     border-radius: 5px;
     color: black;
     cursor: pointer;
@@ -51,5 +50,37 @@
 .container-task .p-genre {
     font-size: 13px;
     color: red
+}
+
+
+/* OTRO */
+div.container-btn-taskPublica {
+    display: flex;
+    justify-content: space-around;
+    margin-top:auto
+}
+
+.container-btn-taskPublica button {
+    width: 100px;
+    cursor: pointer;
+    border: none;
+    margin-bottom: 5px;
+    padding: 3px;
+    background-color: rgb(206, 136, 6);
+    border-radius: 5px;
+    color: white;
+}
+
+.container-btn-taskPublica button:hover {
+    background-color: orange;
+}
+
+.container-btn-taskPublica .btn-delete {
+    background-color: rgba(255, 0, 0, 0);
+    color: black;
+}
+
+.container-btn-taskPublica .btn-delete:hover {
+    background-color: red;
 }
 

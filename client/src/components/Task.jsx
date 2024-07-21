@@ -10,7 +10,7 @@ const Task = ({ id, datePublication, genres, title }) => {
 
   useEffect(() => {
     if(title.length >= 140) {
-      setTitleMod(title.slice(1, 115) + '...');
+      setTitleMod(title.slice(0, 115) + '...');
       return
     };
   }, [])

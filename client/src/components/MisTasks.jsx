@@ -3,7 +3,7 @@ import axios from "../api/axios";
 import TaskMias from "../components/TaskPublica";
 import NavBar from "../components/NavBar";
 import { useNavigate } from "react-router-dom";
-import add from '../img/add.png'
+import add from '../img/add-white.png'
 import "../css/Tasks.css";
 
 const MisTasks = ({ isAutenticated }) => {
@@ -43,7 +43,7 @@ const MisTasks = ({ isAutenticated }) => {
                         />
                     ))
                 )}
-                <img src={add} alt="Agregar publicación" onClick={() => navigate('/subir-publicacion')}/>
+                <img className='add-publication' src={add} alt="Agregar publicación" onClick={() => navigate('/subir-publicacion')}/>
             </div>
         </div>
     );

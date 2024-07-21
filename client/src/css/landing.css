@@ -1,0 +1,34 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.container-landing {
+    display: flex;
+    flex-direction: column;
+    margin-top: 30vh;
+    align-items: center;
+    height: 70vh;
+}
+
+.link-home {
+    list-style: none;
+    margin-top: 30px;
+}
+
+.link-home button {
+    font-weight: 700;
+    width: 80px;
+    height: 30px;
+    background-color: white;
+    border: none;
+    border: 2px solid black;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.link-home button:hover {
+    font-weight: bolder;
+    background-color: rgb(151, 212, 233);
+    border: 2px solid rgb(151, 212, 233);
+}
