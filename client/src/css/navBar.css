@@ -36,6 +36,7 @@ nav img {
 .menu-horizontal > li:hover {
     background-color: rgba(0, 0, 0, 0.555);
     border-radius: 2px;
+    z-index: 5;
 }
 
 
@@ -67,12 +68,14 @@ nav img {
 .menu-horizontal li:hover .menu-vertical {
     display: block;
     margin-top: 60px;
+    z-index: 5;
 }
 
 .menu-vertical li:hover {
     background-color: rgba(218, 13, 236, 0.575);
     color: white;
     border-radius: 3px;
+    z-index: 5;
 }
 
 .menu-vertical li {
@@ -137,6 +140,7 @@ li.register-li {
 
 .menu-horizontal .register-li:hover .menu-vertical {
     margin-top: 105px;
+    z-index: 5;
 }
 
 .menu-horizontal .register-li:hover .menu-vertical-hola {

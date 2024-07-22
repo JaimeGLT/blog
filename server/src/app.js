@@ -8,12 +8,13 @@ const favoriteRouter = require('./routes/favorites.routes');
 
 const app = express();
 
+const FRONT_URL = process.env.FRONTEND_URL || 'http://localhost:5173'
 // Middlewares
 app.use(express.json());
 app.use(cookieParser());
 app.use(cors({
     credentials: true,
-    origin: 'http://localhost:5173'
+    origin: FRONT_URL
 }));
 app.use(morgan('dev'));
 
