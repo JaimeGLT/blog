@@ -1,9 +1,9 @@
 const { Sequelize } = require('sequelize');
-const { DB_NAME, DB_USERNAME, DB_HOST, DB_PASSWORD } = process.env;
+const { DB_NAME, DB_USERNAME, DB_HOST, DB_PASSWORD, DB_PORT } = process.env;
 const userModel = require('./src/models/User.model');
 const taskModel = require('./src/models/Task.model');
 
-const database = new Sequelize(`postgres://${DB_USERNAME}:${DB_PASSWORD}@${DB_HOST}/${DB_NAME}`, { logging: false });
+const database = new Sequelize(`postgres://${DB_USERNAME}:${DB_PASSWORD}@${DB_HOST}:${DB_PORT}/${DB_NAME}`, { logging: false });
 
 userModel(database);
 taskModel(database);
