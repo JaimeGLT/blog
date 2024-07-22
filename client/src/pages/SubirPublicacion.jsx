@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import axios from '../api/axios'
 import { useNavigate } from 'react-router-dom';
 import NavBar from '../components/NavBar';
+import '../css/editTask.css'
 
 const SubirPublicacion = ({ isAutenticated }) => {
 
@@ -48,16 +49,31 @@ const SubirPublicacion = ({ isAutenticated }) => {
 
 
   return (
-    <div>
+    <div className='container-editTask'>
         <NavBar isAutenticated={isAutenticated}/>
-        <form onSubmit={handleSubmit}>
-
+        <form onSubmit={handleSubmit} className='form-editTask' id='form-up-pub'>
+            <h2 id='h2'>SUBIR PUBLICACIÓN</h2>
             {
-                errors.length ? errors.map(err => <p key={2*Math.random()}>{err}</p>) : errors.msg ? errors.msg : null
+                errors.length ? errors.map(err => <p className='p-errors' key={2*Math.random()}>{err}</p>) : errors.msg ? <p className='p-errors'>{errors.msg}</p> : null
             }
 
-            <input type="text" placeholder='Título' onChange={handleChange} value={task.title} name='title'/>
-            <input type="text" placeholder='Descripción' onChange={handleChange} value={task.description} name='description'/>
+            <input 
+                type="text" 
+                placeholder='Título' 
+                onChange={handleChange} 
+                value={task.title} 
+                name='title'
+                className='input-form'
+            />
+            <textarea 
+                placeholder='Descripción' 
+                className='input-form'                
+                onChange={handleChange} 
+                value={task.description} 
+                name='description'
+                rows='10'
+                cols='10'
+            />
             <p>Fecha de Publicacion: {dateNow}</p>
             <label htmlFor='select'>Elige un género</label>
             <select name="genres" id="select" onChange={handleChange}>
@@ -70,7 +86,7 @@ const SubirPublicacion = ({ isAutenticated }) => {
                 <option value="Varios">Varios</option>
             </select>
 
-            <button>Crear Publicacion</button>
+            <button id='btn-crear-pub'>Crear Publicacion</button>
         </form>
     </div>
   )

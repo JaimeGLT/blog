@@ -155,20 +155,15 @@ const getUserById = async (req, res) => {
 
 };
 
-const putUser = async (req, res) => {
+const putPassword = async (req, res) => {
 
     const { id } = req.user;
-    const { username, password, newPassword, confirmNewPassword } = req.body;
+    const { password, newPassword, confirmNewPassword } = req.body;
 
     try {
         
         const getUserById = await User.findByPk(id);
         if(!getUserById) return res.status(404).send({ msg: 'Usuario no encontrado' });
-
-        if(username && username.length > 3) {
-            getUserById.username = username;
-            await getUserById.save();
-        };
 
         if(password || newPassword || confirmNewPassword) {
             const verifyPassword = await bcrypt.compare(password, getUserById.password);
@@ -190,6 +185,26 @@ const putUser = async (req, res) => {
     }
 
 };
+
+const putUsername = async (req, res) => {
+
+    const { id } = req.user;
+    const { username } = req.body;
+
+    try {
+        const userFound = await User.findByPk(id);
+        if(!userFound) return res.status(404).send({ msg: 'El usuario no fue encontrado' });
+
+        userFound.username = username;
+        await userFound.save();
+
+        return res.status(200).send({ msg: 'Datos actualizados correctamente' });
+
+    } catch (error) {
+        return res.status(404).send({ msg: error.message });
+    }
+
+}
 
 const verify = (req, res) => {
 
@@ -225,6 +240,7 @@ module.exports = {
     forgotPassword,
     newPassword,
     getUserById,
-    putUser,
+    putUsername,
+    putPassword,
     verify
 }

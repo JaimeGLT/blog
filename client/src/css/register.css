@@ -25,6 +25,7 @@
     height: 40px;
     border: none;
     border-radius: 10px;
+    padding: 3px;
 }
 
 .form-register button {

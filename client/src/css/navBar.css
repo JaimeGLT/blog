@@ -141,6 +141,7 @@ li.register-li {
 
 .menu-horizontal .register-li:hover .menu-vertical-hola {
     margin-top: 226px;
+    z-index: 5;
 }
 
 li.menu-li {

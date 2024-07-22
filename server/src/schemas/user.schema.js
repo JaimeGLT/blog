@@ -54,9 +54,32 @@ const validatePassword = z.object({
     })
 })
 
+const putPasswordSchema = z.object({
+    newPassword: z.string({
+        required_error: 'La nueva contraseña es obligatoria'
+    }).min(4, {
+        message: 'Nueva contraseña no puede ser menor a 4 caracteres'
+    }),
+    confirmNewPassword: z.string({
+        required_error: 'Confirmacion de contraseña es obligatoria'
+    }).min(4, {
+        message: 'Confirmacion de contraseña debe ser igual a la nueva'
+    })
+});
+
+const putUsernameSchema = z.object({
+    username: z.string({
+        required_error: 'El nombre de usuario es obligatorio'
+    }).min(4, {
+        message: 'Nombre de usuario no puede ser menor a 4 caracteres'
+    })
+})
+
 module.exports = {
     registerSchema,
     loginSchema,
     sendEmailSchema,
-    validatePassword
+    validatePassword,
+    putPasswordSchema,
+    putUsernameSchema
 }

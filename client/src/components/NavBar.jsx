@@ -71,7 +71,7 @@ const NavBar = ({ isAutenticated, setTasks }) => {
 
     return (
         <nav>
-                { pathname !== '/subir-publicacion' && pathname !== '/mi-perfil' ? <div className='search-container'>
+                { pathname !== '/subir-publicacion' && pathname !== '/mi-perfil' && !pathname.includes('/publicacion') ? <div className='search-container'>
                     <input type="input" placeholder='Buscar por título' onChange={handleChangeSearch} value={search} />
         
                     <img id='search' onClick={handleSearch} src={searchIMG}/>
@@ -80,7 +80,7 @@ const NavBar = ({ isAutenticated, setTasks }) => {
                     : null }
                 <ul className='menu-horizontal'>
             {
-                    pathname !== '/subir-publicacion' && pathname !== '/mi-perfil' 
+                    pathname !== '/subir-publicacion' && pathname !== '/mi-perfil' && !pathname.includes('/publicacion/') 
                         ? <>
 
                             <li className='menu-li' value='seteador'>

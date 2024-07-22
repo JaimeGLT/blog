@@ -31,7 +31,7 @@ const Register = () => {
 
     try {
       const res = await axios.post('/register', userRegister);
-      setErrors(null);
+      setErrors({ msg: 'Se han guardado los cambios' })
       navigate('/login');
     } catch (error) {
       setErrors(error.response.data);
@@ -43,7 +43,7 @@ const Register = () => {
       <h2>REGISTRO</h2>
       <form onSubmit={handleSubmit} className='form-register'>
         {
-          errors?.length ? errors?.map(err => <p className='p-errors' key={2 * Math.random()}>{err}</p>) : errors?.msg ? <p className='p-errors'>{errors.msg}</p> : null
+          errors?.length ? errors?.map(err => <p className='p-errors' key={2 * Math.random()}>{err}</p>) : errors?.msg ? <p className='p-errors p-error-good'>{errors.msg}</p> : null
         }
         <input type="text" placeholder='Nombre de Usuario' onChange={handleChange} value={userRegister.username} name='username'/>
         <input type="email" placeholder='Correo Electrónico' onChange={handleChange} value={userRegister.email} name='email'/>

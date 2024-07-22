@@ -1,0 +1,83 @@
+.container-editTask {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.container-editTask h2 {
+    margin-bottom: 30px;
+}
+
+.form-editTask {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-editTask .input-form {
+    width: 600px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    border: none;
+    background-color: rgba(0, 0, 0, 0.548);
+    color: whitesmoke
+}
+
+.form-editTask input.input-form {
+    height: 60px;
+}
+
+.form-editTask select {
+    margin-top: 15px;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    height: 40px;
+    cursor: pointer;
+}
+
+.form-editTask .container-btn-edit {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.form-editTask button {
+    width: 150px;
+    padding: 8px;
+    cursor: pointer;
+    border: none;
+    border-radius: 10px;
+    font-weight: 700;
+}
+
+.form-editTask button:first-child {
+    background-color: rgba(255, 0, 0, 0);
+    border: 1px solid white;;
+    color: white;
+
+}
+
+.form-editTask button:first-child:hover {
+    background-color: red;
+    border: 1px solid red;
+}
+
+.form-editTask button {
+    background-color: rgb(211, 139, 5);
+    border: 1px solid white;
+}
+
+.form-editTask button:hover {
+    background-color: orange;
+    border: 1px solid orange;
+    color: white;
+}
+
+#form-up-pub {
+    margin-bottom: 7%;
+}
+
+#btn-crear-pub {
+    margin-left: 37%;
+}

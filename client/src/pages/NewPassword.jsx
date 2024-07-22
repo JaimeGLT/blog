@@ -1,6 +1,7 @@
 import { useState } from "react"
 import axios from '../api/axios';
 import { useNavigate, useParams } from "react-router-dom";
+import '../css/newPassword.css';
 
 const NewPassword = () => {
 
@@ -32,7 +33,7 @@ const NewPassword = () => {
             setMessage('Se ha cambiado correctamente la contraseña');
             setTimeout(() => {
                 navigate('/login');
-            }, 5000)
+            }, 3000)
         } catch (error) {
             setErros(error.response.data);
             setMessage('');
@@ -41,10 +42,10 @@ const NewPassword = () => {
 
   return (
     <div>
-        <form onSubmit={handleSubmit}>
-
+        <form onSubmit={handleSubmit} className="form-newPassword">
+            <h2>Nueva contraseña</h2>
             {
-                errors.length ? errors.map(err => <p key={4 * Math.random()}>{err}</p>) : errors?.msg ? <p>{errors.msg}</p> : null
+                errors.length ? errors.map(err => <p className='p-errors' key={4 * Math.random()}>{err}</p>) : errors?.msg ? <p className='p-errors'>{errors.msg}</p> : null
             }
 
             <input type="password" placeholder='Nueva contraseña' onChange={handleChange} value={userPassword.newPassword} name='newPassword'/>

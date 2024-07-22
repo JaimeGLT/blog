@@ -1,7 +1,7 @@
 const userRouter = require('express').Router();
 const schema = require('../middlewares/schema');
 const validateTokenNewPassword = require('../middlewares/tokenValidateChangePassword');
-const { registerSchema, loginSchema, sendEmailSchema, validatePassword } = require('../schemas/user.schema');
+const { registerSchema, loginSchema, sendEmailSchema, validatePassword, putPasswordSchema, putUsernameSchema } = require('../schemas/user.schema');
 const { 
     register,
     login,
@@ -9,7 +9,8 @@ const {
     forgotPassword,
     newPassword,
     getUserById,
-    putUser,
+    putUsername,
+    putPassword,
     verify
 } = require('../controllers/user.controller');
 const verifyToken = require('../middlewares/verifyToken');
@@ -23,6 +24,7 @@ userRouter.post('/new-password/:token', validateTokenNewPassword, schema(validat
 userRouter.get('/verify', verify);
 
 userRouter.get('/user', verifyToken, getUserById);
-userRouter.put('/user', verifyToken, putUser);
+userRouter.put('/user-password', verifyToken, schema(putPasswordSchema), putPassword);
+userRouter.put('/user-username', verifyToken, schema(putUsernameSchema), putUsername);
 
 module.exports = userRouter;
